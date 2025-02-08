@@ -115,6 +115,7 @@ Ensure the following symbolic links exist:
 ---
 
 ## 📑 Summary of the Build Process
+### ❗Important
 
 1️⃣ Place all sources and patches in a directory accessible from the chroot environment, e.g., `/mnt/lfs/sources/`. *(Already done if you followed the repo setup.)*
 
@@ -126,11 +127,23 @@ Ensure the following symbolic links exist:
 3️⃣ For each package:
 
 - Extract the package using `tar`. *(Use only `tar`; avoid `cp -R` as it can modify timestamps and cause build failures.)*
+```bash
+tar -xvf packageName.tar.gz 
+```
 - Navigate into the extracted directory.
+``` bash
+cd packageName
+```
 - Follow build instructions.
 - Return to the `/mnt/lfs/sources/` directory after the build.
+```bash
+cd $LFS/sources
+```
 - Delete the extracted source directory unless instructed otherwise.
-
+```bash
+rm -r packageName 
+rm -rf packageName ## permanently delete the directory
+```
 ---
 
 ✅ **By following this structured approach, you ensure a smooth and successful LFS build!**
